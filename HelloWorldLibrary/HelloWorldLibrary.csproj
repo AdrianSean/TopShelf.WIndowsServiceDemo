@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DoSomeStuff.cs" />
+    <Compile Include="DoSomeStuffInstanceClass.cs" />
+    <Compile Include="DoSomeStuffStaticClass.cs" />
+    <Compile Include="IDoSomeStuff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

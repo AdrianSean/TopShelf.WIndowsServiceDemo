@@ -47,7 +47,7 @@ namespace WindowsService
         {
             while (!_shutdownEvent.WaitOne(1000)) // 1 second
             {  
-                DoSomeStuff.PrintHelloWorld();
+                DoSomeStuffStaticClass.PrintHelloWorld();
             }  
         }
     }

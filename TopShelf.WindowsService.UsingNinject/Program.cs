@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Topshelf;
+using Topshelf.Ninject;
 
 namespace TopShelf.WindowsService.UsingNinject
 {
@@ -10,6 +7,22 @@ namespace TopShelf.WindowsService.UsingNinject
     {
         static void Main(string[] args)
         {
+            var rc = HostFactory.Run(x =>
+            {
+                x.UseNinject(new NinjectConfiguration()); //Initiates Ninject and consumes Modules
+
+                x.Service<HelloWorldServiceManager>(s =>
+                {
+                    s.ConstructUsingNinject();
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
+                x.RunAsLocalSystem();
+
+                x.SetDescription("HelloWorld Windows Service using TopShelf");
+                x.SetDisplayName("HelloWorld Windows Service");
+                
+            });
         }
     }
 }

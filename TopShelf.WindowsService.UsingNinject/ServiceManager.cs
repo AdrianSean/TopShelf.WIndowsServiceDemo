@@ -2,12 +2,19 @@
 using System;
 using System.Threading;
 
-namespace TopShelf.WIndowsService
+namespace TopShelf.WindowsService.UsingNinject
 {
     public class HelloWorldServiceManager
     {
         ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         Thread _thread;
+
+        readonly IDoSomeStuff _doSomeStuff;
+
+        public HelloWorldServiceManager(IDoSomeStuff doSomeStuff)
+        {
+            _doSomeStuff = doSomeStuff;
+        }
 
         public void Start() {
 
@@ -37,7 +44,7 @@ namespace TopShelf.WIndowsService
         {
             while (!_shutdownEvent.WaitOne(1000)) // 1 second
             {
-                DoSomeStuffStaticClass.PrintHelloWorld();
+                _doSomeStuff.PrintHelloWorld();
             }
         }
     }

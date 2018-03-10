@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Topshelf;
 
 namespace TopShelf.WindowsService.UsingStartParameter
 {
@@ -10,7 +6,20 @@ namespace TopShelf.WindowsService.UsingStartParameter
     {
         static void Main(string[] args)
         {
+            var rc = HostFactory.Run(x =>
+            {
+                x.Service<HelloWorldServiceManager>(s =>
+                {
+                    s.ConstructUsing(name => new HelloWorldServiceManager());
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
+                x.RunAsLocalSystem();
 
+                x.SetDescription("HelloWorld Windows Service using TopShelf");
+                x.SetDisplayName("HelloWorld Windows Service");
+                x.SetServiceName("HelloWorld Windows Service");
+            });
         }
     }
 }

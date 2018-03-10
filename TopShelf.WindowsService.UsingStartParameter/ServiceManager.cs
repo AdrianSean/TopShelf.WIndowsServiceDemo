@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 
-namespace TopShelf.WIndowsService
+namespace TopShelf.WindowsService.UsingStartParameter
 {
     public class HelloWorldServiceManager
     {

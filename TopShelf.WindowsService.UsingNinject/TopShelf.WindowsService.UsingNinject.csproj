@@ -51,12 +51,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NinjectConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelloWorldLibrary\HelloWorldLibrary.csproj">
+      <Project>{84378b41-b416-474d-a979-ea0abb64d628}</Project>
+      <Name>HelloWorldLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

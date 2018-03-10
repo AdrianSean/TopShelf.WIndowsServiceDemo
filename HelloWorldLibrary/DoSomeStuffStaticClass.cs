@@ -2,7 +2,7 @@
 
 namespace HelloWorldLibrary
 {
-    public static class DoSomeStuff
+    public static class DoSomeStuffStaticClass
     {
         public static void PrintHelloWorld() {
 
