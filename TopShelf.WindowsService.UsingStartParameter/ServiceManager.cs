@@ -9,12 +9,14 @@ namespace TopShelf.WindowsService.UsingStartParameter
         ManualResetEvent _shutdownEvent = new ManualResetEvent(false);
         Thread _thread;
 
-        readonly IDoSomeStuff _doSomeStuff;
+       
+        readonly string _msg;
 
-        public HelloWorldServiceManager(IDoSomeStuff doSomeStuff)
+        public HelloWorldServiceManager(string msg)
         {
-            _doSomeStuff = doSomeStuff;
+            _msg = msg;
         }
+
 
         public void Start() {
 
@@ -44,7 +46,8 @@ namespace TopShelf.WindowsService.UsingStartParameter
         {
             while (!_shutdownEvent.WaitOne(1000)) // 1 second
             {
-                _doSomeStuff.PrintHelloWorld();
+                Console.WriteLine("Start parameter: {0}", _msg);
+                DoSomeStuffStaticClass.PrintHelloWorld();
             }
         }
     }
